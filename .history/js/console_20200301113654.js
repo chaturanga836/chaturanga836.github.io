@@ -302,6 +302,7 @@
     };
 
     window.onload = function(){
+
         init();
     }
 })(window);

@@ -1,6 +1,7 @@
 
 
 (function(window){
+    //var root = document.getElementsByTagName('body')[0];
 
 
    
@@ -107,6 +108,38 @@
         
         throw "unknow object";
     }
+
+    var cssClass = function(){
+        var consoleParent ={
+            position:'absolute',
+            width: '100%',
+            minHeight: '50px',
+            zIndex: 1000,
+            backgroundColor: 'rgb(40, 40, 40)',
+            color: 'rgb(216, 216, 216)',
+            top: '0px',
+            padding: '20px' 
+        };
+
+        var consoleContainer = {
+            paddingLeft: '15px',
+            borderLeft: '1px solid rgb(115, 115, 115)',
+            marginLeft: '0px'
+        };
+
+        var consoleElemenContainer = {
+            paddingTop: '5px',
+            paddingBottom: '5px',
+            consoleKey:{
+                marginTop: '0px',
+                marginBottom: '0px'
+             },
+
+        };
+
+        var consoleValue ={
+            color: 'rgb(71, 209, 71)'
+        };
 
 
 
@@ -302,6 +335,7 @@
     };
 
     window.onload = function(){
+
         init();
     }
 })(window);

@@ -302,6 +302,7 @@
     };
 
     window.onload = function(){
+        console.log("here")
         init();
     }
 })(window);

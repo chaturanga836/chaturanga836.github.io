@@ -1,7 +1,7 @@
 
 
 (function(window){
-
+    console.log("ok")
 
    
     var types = {
@@ -302,6 +302,7 @@
     };
 
     window.onload = function(){
+
         init();
     }
 })(window);

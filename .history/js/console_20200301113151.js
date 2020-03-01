@@ -1,6 +1,7 @@
 
 
 (function(window){
+    //var root = document.getElementsByTagName('body')[0];
 
 
    
@@ -302,6 +303,7 @@
     };
 
     window.onload = function(){
+
         init();
     }
 })(window);
