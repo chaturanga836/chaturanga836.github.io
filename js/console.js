@@ -1,9 +1,42 @@
 
 
 (function(window){
+    var colorCodes = {
+        'BOOLEAN': '#3385ff',
+        'TEXT': '#47d147',
+        'NUMBER': '#ffd24d',
+        'FUNCTION': '#f2f2f2'
+    }
+    var rootStyle = {
+        'position':'absolute',
+        'width':'100%',
+        'minHeight':'50px',
+        'zIndex':'1000',
+        'backgroundColor':'#282828',
+        'color':'#D8D8D8',
+        'top':'0',
+        'padding':'20px',
+        '.subelement': {
+            paddingTop: '5px',
+            paddingBottom: '5px'
+        },
+        'ul': {
+            'paddingLeft': '15px',
+            'borderLeft':'1px solid #737373',
+            'marginLeft': '0px',
+            'li': {
+                'listSytle':'none',
+                '.one': {
+                    'color':'#ccc'
+                }
+            },
+        },
+        'p':{
+            'marginTop':'0px',
+            'marginBottom': '0px'
+        }
+    };
 
-
-   
     var types = {
         _UNDEFINED: "undefined",
         _STRING: "string",
@@ -16,58 +49,14 @@
         _FUNCTION: "function",
     };
 
-    var rootStyle={
-        'position':'absolute',
-        'width':'100%',
-        'minHeight':'50px',
-        'zIndex':'1000',
-        'backgroundColor':'#282828',
-        'color':'#D8D8D8',
-        'top':'0',
-        'padding':'20px',
-    };
-
-    var ulStyles = {
-        'paddingLeft': '15px',
-        'borderLeft':'1px solid #737373',
-        'marginLeft': '0px',
-    }
-
-    var supElemStyles = {
-        paddingTop: '5px',
-        paddingBottom: '5px'
-    }
-
-    var pStyles = {
-        'marginTop':'0px',
-        'marginBottom': '0px'
-    }
-
-    var colorCodes = {
-        'BOOLEAN': '#3385ff',
-        'TEXT': '#47d147',
-        'NUMBER': '#ffd24d',
-        'FUNCTION': '#f2f2f2'
-    }
-
     var vDom ={};
 
-    setStyles = function(element,styles){
-        for(var i in styles){
-            var cas = i.replace(/[A-Z]/g, function(m){ return "-" + m.toLowerCase()});
-            element.style[cas] = styles[i];
-        }
+    var setCSSClass = function(element,cssClass){
 
-        return element;
+        setAttribute(element,'class',cssClass);
     }
 
-    setStylesAttr = function(attrname){
-       
-        return attrname.replace(/[A-Z]/g, function(m){ return "-" + m.toLowerCase()});
-       
-    }
-
-    _getType = function(obj){
+    var _getType = function(obj){
 
         if(typeof obj === types._UNDEFINED){
             return types._UNDEFINED;
@@ -108,76 +97,50 @@
         throw "unknow object";
     }
 
-
-
-
-    var _element = function(e){
-        if(_getType(e) !== _HTML_ELEMENT){
-            throw "invalid dom element";
-        }
-        var self = this;
-
-    }
-
-    createElement = function(tagName,textNode){
+    var createElement = function(tagName,textNode){
         var para = document.createElement(tagName);
         if(textNode !== undefined && textNode !== null && typeof textNode === 'string'){
             var node = document.createTextNode(textNode);
             para.appendChild(node);
         }
-        
-        //document.body.appendChild(para);
         return para;
     };
-
-    createChildElement = function(){
-
-    }
-
-
-    setAttributes = function(element,attrs){
+    // var setAttributes = function(element,attrs){
        
-        if(_getType(attrs) === types._OBJECT){
+    //     if(_getType(attrs) === types._OBJECT){
 
-            for(var i in attrs){
-                setAttribute(element,i, attrs[i]);
-            }
-        }
+    //         for(var i in attrs){
+    //             setAttribute(element,i, attrs[i]);
+    //         }
+    //     }
 
-        return element;
-    }
+    //     return element;
+    // }
 
-    canAppend = function(element){
-        if(element.nodeType === 1){
-            return true;
-        }
+    // var canAppend = function(element){
+    //     if(element.nodeType === 1){
+    //         return true;
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    setAttribute = function(element,attr,value){
-
-        if(element.hasAttribute(i)){
+    var setAttribute = function(element,attr,value){
             if(value){
                 element.setAttribute(attr,value);
             }else{
                 element.setAttribute(attr,'');
             }
-        }
-
+        
         return element;
     }
-
-
 
     updateStyle = function(element,prop,value){
         
         element.style[prop] = value;
     }
 
-
-
-    insertFirst = function(parentElem, newElem){
+    var insertFirst = function(parentElem, newElem){
         var chil = parentElem.children;
       
         if(chil.length > 0){
@@ -211,7 +174,7 @@
 
     var createSubElement = function(key, val, type){
         var ele = createElement('div');
-        setStyles(ele,supElemStyles)
+        setCSSClass(ele, 'subelement');
         var tp =_getType(val);
         var startNode = "{";
         var endNode = "}";
@@ -226,7 +189,6 @@
                 endNode = "}";
             }
             var nam = createElement('P');
-            setStyles(nam,pStyles)
 
             var btn = createElement('button');
             btn.innerText = ":";
@@ -267,7 +229,6 @@
 
     var generateStack = function(ob){
         var ele = createElement('div');
-        setStyles(ele,ulStyles)
 
             for(var  i in ob){
                 var _ele = null;
@@ -291,11 +252,11 @@
     }
 
     var init = function(){
+        var cssClasses =window.ConsoleStyle(rootStyle);
         var root = document.body;
         var elem = createElement("div");
-        setStyles(elem,rootStyle);
         insertFirst(root, elem);
-
+        setCSSClass(elem, 'console');
          var t = generateStack(dummy);
          
         elem.appendChild(t);
@@ -303,5 +264,6 @@
 
     window.onload = function(){
         init();
+        console.dir(document)
     }
 })(window);

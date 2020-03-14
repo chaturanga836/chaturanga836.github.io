@@ -1,29 +1,4 @@
 
-var rootStyle = {
-    'position':'absolute',
-    'width':'100%',
-    'minHeight':'50px',
-    'zIndex':'1000',
-    'backgroundColor':'#282828',
-    'color':'#D8D8D8',
-    'top':'0',
-    'padding':'20px',
-    'ul': {
-        'paddingLeft': '15px',
-        'borderLeft':'1px solid #737373',
-        'marginLeft': '0px',
-        'li': {
-            'listSytle':'none',
-            '.one': {
-                'color':'#ccc'
-            }
-        },
-    },
-    'p':{
-        'marginTop':'0px',
-        'marginBottom': '0px'
-    }
-};
 (function(window){
       
     var self = this;
@@ -40,22 +15,24 @@ var rootStyle = {
     };
 
     self._styleTxt = "";
+    self.classes = {};
     self.head = document.head || document.getElementsByTagName('head')[0],
     self.style = document.createElement('style');
     head.appendChild(style);
     style.type = 'text/css';
 
     self.setStylesAttr = function(attrname,value){
-       
         var attr = attrname.replace(/[A-Z]/g, function(m){ return "-" + m.toLowerCase()});
 
-        return attr+':'+value+';';
+        //return attr+':'+value+';';
+        return {'attr':attr, 'value':value}
        
     }
 
    
     self.isObject = function(obj, parentClass){
         var _finale = [];
+        
        
         for(var i in obj){
             if( obj.hasOwnProperty(i) ){
@@ -63,25 +40,41 @@ var rootStyle = {
                     self.isObject(obj[i], parentClass+' '+i)
                 }else{
                     var prop = self.setStylesAttr( i, obj[i] );
+               
                     _finale.push(prop);
                 }
             }
         }
         
         if(_finale.length > 0){
-            var _cssClass = parentClass+ '{'+_finale.join('')+'} ';
+            self.classes[parentClass] = _finale;
+            var _prop = [];
+            for(var _i in _finale){
+                _prop.push( _finale[_i].attr+':'+_finale[_i].value+';')
+            }
+            var _cssClass = parentClass+ '{'+_prop.join('')+'} ';
             self._styleTxt = self._styleTxt+''+_cssClass; 
         }
        
        
     };
 
-    var init = function(){
-     self.isObject(rootStyle, '.console');
-     self.style.appendChild(document.createTextNode(_styleTxt));
-    }
+    window.ConsoleStyle = function(rootStyle){
+ 
+        if(rootStyle){
+            if(typeof rootStyle === TYPES._OBJECT && !Array.isArray(rootStyle)){
+                self.isObject(rootStyle, '.console');
+             
+                self.style.appendChild(document.createTextNode(_styleTxt));
+            }else{
+                throw "invalid style object"
+            }
+ 
+        }
 
-    init();
+        return self.classes;
+    }
+    //window.ConsoleStyle(rootStyle)
 
 
 
