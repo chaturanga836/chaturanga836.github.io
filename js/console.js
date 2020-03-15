@@ -21,11 +21,12 @@
                 paddingLeft: "20px"
             }
         },
-        '.tree-line':{
+        '.tree-line': {
             borderLeft: '1px dashed #474342'
         },
-        '.tree-line:first-child':{
-            borderLeft:'none'
+        '.tree-line:first-child': {
+            borderLeft: 'none',
+            margin: 0
         },
         ul: {
             paddingLeft: "15px",
@@ -42,24 +43,24 @@
             marginTop: "0px",
             marginBottom: "0px"
         },
-        '.arrow':{
+        '.arrow': {
             display: 'inline-block',
-            cursor:'pointer'
-        },
-
-        '.arrow-right':{
-            width: '0', 
-            height: '0', 
-            borderTop: '5px solid transparent',
-            borderBottom: '5px solid transparent',
-            borderLeft: '5px solid green',
+            cursor: 'pointer',
             marginLeft: '5px',
             marginRight: '5px',
         },
 
-        '.arrow-down':{
-            width: '0', 
-            height: '0', 
+        '.arrow-right': {
+            width: '0',
+            height: '0',
+            borderTop: '5px solid transparent',
+            borderBottom: '5px solid transparent',
+            borderLeft: '5px solid green',
+        },
+
+        '.arrow-down': {
+            width: '0',
+            height: '0',
             borderLeft: '5px solid transparent',
             borderRight: '5px solid transparent',
             borderTop: '5px solid green',
@@ -79,15 +80,58 @@
     };
 
     var vDom = {};
+    var carrotCount = 0;
 
     var setCSSClass = function (element, cssClass) {
         var t = _getType(cssClass);
-        if( t === TYPES._ARRAY){
-            setAttribute(element, "class", cssClass.join(' '));
-        }else{
-            setAttribute(element, "class", cssClass);
+        var _x = element.getAttribute("class");
+        var _classes = [];
+
+        if (_x) {
+            _classes = _x.split(' ');
+
         }
-        
+        if (t === TYPES._ARRAY) {
+            for (var i in cssClass) {
+                var _ind = _classes.indexOf(cssClass[i]);
+                if (_ind == -1) {
+                    _classes.push(cssClass[i]);
+                }
+            }
+
+        } else {
+            var _ind = _classes.indexOf(cssClass);
+            if (_ind == -1) {
+                _classes.push(cssClass);
+            }
+        }
+        setAttribute(element, "class", _classes.join(' '));
+
+    };
+
+    var removeCSSClass = function (element, cssClass) {
+
+        var x = element.getAttribute("class");
+        if (x) {
+            var t = _getType(cssClass);
+            var _classes = x.split(' ');
+
+            if (t === TYPES._ARRAY) {
+                for (var _i in cssClass) {
+                    var _ind = _classes.indexOf(cssClass[i]);
+                    if (_ind > -1) {
+                        _classes.splice(_ind, 1);
+                    }
+                }
+            } else {
+
+                var _ind = _classes.indexOf(cssClass);
+                if (_ind > -1) {
+                    _classes.splice(_ind, 1);
+                }
+            }
+            setAttribute(element, "class", _classes.join(' '));
+        }
     };
 
     var _getType = function (obj) {
@@ -185,6 +229,26 @@
         }
     };
 
+    var setAnimation = function () {
+        var selfAn = this;
+        selfAn.anim;
+        selfAn.start = function ( callback,param) {
+            if(selfAn.anim){
+                clearInterval(selfAn.anim);
+            }
+            selfAn.anim = setInterval( function(param){ 
+                callback(param) 
+            }, 100, param, anim);
+        }
+
+        selfAn.stop = function(key){
+            if(selfAn.anim){
+                clearInterval(selfAn.anim);
+            }
+        }
+        return selfAn;
+    };
+
     var createSubElement = function (key, val, type) {
         var ele = createElement("div");
         setCSSClass(ele, "subelement");
@@ -199,9 +263,39 @@
                 startNode = "";
                 endNode = "";
             }
+
+            carrotCount = carrotCount + 1;
             var nam = createElement("P");
             var carrot = createElement("div");
+            carrot['carrotIndex'] = carrotCount;
+            vDom['carrot_index' + carrotCount] = {
+                show: true
+            };
+            setAttribute(carrot, 'cons-index', 'carrot_' + carrotCount);
             setCSSClass(carrot, ["arrow-right", "arrow"]);
+            carrot.addEventListener('click', function () {
+
+
+                var _id = this.carrotIndex;
+                var _remClass = 'arrow-right';
+                var _addClass = 'arrow-down';
+
+                if (vDom['carrot_index' + _id].show === false) {
+                    _addClass = 'arrow-right';
+                    _remClass = 'arrow-down';
+                } else {
+                    _remClass = 'arrow-right';
+                    _addClass = 'arrow-down';
+                }
+                vDom['carrot_index' + _id].show = !vDom['carrot_index' + _id].show;
+                removeCSSClass(this, _remClass);
+                setCSSClass(this, _addClass);
+
+                if (anim[this.carrotIndex]) {
+                    anim[this.carrotIndex] = undefined;
+                    anim[this.carrotIndex] = setInterval(myTimer, 1000, anim[this.carrotIndex]);
+                }
+            });
 
             var btn = createElement("button");
             btn.innerText = ":";
@@ -212,7 +306,6 @@
             var _node2 = document.createTextNode(endNode);
             nam.appendChild(_nodeKey);
             nam.appendChild(carrot)
-            //nam.appendChild(btn);
             nam.appendChild(_node);
             ele.appendChild(nam);
             ele.appendChild(val);
@@ -223,12 +316,12 @@
 
             var _nodeKeyText = document.createTextNode("" + key + ": ");
             var _nodeValText;
-            if(tp === TYPES._STRING){
+            if (tp === TYPES._STRING) {
                 _nodeValText = document.createTextNode("\"" + val + "\"");
-            }else{
+            } else {
                 _nodeValText = document.createTextNode("" + val + "");
             }
-  
+
 
             _nodeKey.appendChild(_nodeKeyText);
             _nodeVal.appendChild(_nodeValText);
@@ -277,6 +370,5 @@
 
     window.onload = function () {
         init();
-        console.dir(document);
     };
 })(window);
