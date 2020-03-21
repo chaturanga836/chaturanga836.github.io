@@ -5,6 +5,8 @@
         NUMBER: "#ffd24d",
         FUNCTION: "#f2f2f2"
     };
+
+    var rootelem;
     var rootStyle = {
         position: "absolute",
         minHeight: "50px",
@@ -12,6 +14,9 @@
         backgroundColor: "#282828",
         color: "#D8D8D8",
         top: "0",
+        left:'0',
+        margin:'0',
+        padding: '0px',
         '.hide':{
             'display':'none',
         },
@@ -26,7 +31,6 @@
             top: '-8px',
             marginRight: '5px',
         },
-        padding: "20px",
         ".subelement": {
             paddingTop: "5px",
             paddingBottom: "5px",
@@ -260,15 +264,18 @@
         selfAn['start'] = function ( callback,param) {
             if(selfAn.anim){
                 clearInterval(selfAn.anim);
+                setWidth();
             }
             selfAn.anim = setInterval( function(param){ 
-                callback(param) 
+                callback(param);
+                setWidth(); 
             }, 1000/60, param, selfAn.anim);
         }
 
         selfAn['stop'] = function(key){
             if(selfAn.anim){
                 clearInterval(selfAn.anim);
+                setWidth();
             }
         }
         return selfAn;
@@ -477,15 +484,34 @@
         return ele;
     };
 
+    var setWidth = function(){
+        var _style = rootelem.currentStyle || window.getComputedStyle(rootelem);
+        var margin = parseFloat(_style.marginLeft) + parseFloat(_style.marginRight),
+         padding = parseFloat(_style.paddingLeft) + parseFloat(_style.paddingRight),
+         border = parseFloat(_style.borderLeftWidth) + parseFloat(_style.borderRightWidth);
+         height = parseFloat(_style.height);
+
+        setStyle(rootelem,{'width':(window.innerWidth -17)+'px'});
+        if(height < window.innerHeight){
+            setStyle(rootelem,{'height':(window.innerHeight)+'px'});
+        }
+    
+    }
+
+    window.onresize = function(){
+        setWidth();
+    }
     var init = function () {
         var cssClasses = window.ConsoleStyle(rootStyle);
         var root = document.body;
-        var elem = createElement("div");
-        insertFirst(root, elem);
-        setCSSClass(elem, "console");
+        rootelem = createElement("div");
+        insertFirst(root, rootelem);
+        setCSSClass(rootelem, "console");
         var t = generateStack(dummy);
 
-        elem.appendChild(t);
+        rootelem.appendChild(t);
+        setWidth()
+        
     };
 
     window.onload = function () {
