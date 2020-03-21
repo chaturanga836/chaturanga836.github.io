@@ -15,6 +15,17 @@
         '.hide':{
             'display':'none',
         },
+        '.main-element':{
+
+        },
+        '.label':{
+            borderBottom: '1px dashed #474342',
+            padding: '0px 8px',
+            height: '1px',
+            position: 'relative',
+            top: '-8px',
+            marginRight: '5px',
+        },
         padding: "20px",
         ".subelement": {
             paddingTop: "5px",
@@ -24,19 +35,22 @@
                 paddingLeft: "20px"
             }
         },
+        '.border-element':{
+            display: "inline-block",
+        },
         '.tree-line': {
-            borderLeft: '1px dashed #474342'
+            borderLeft: '1px dashed #474342',
         },
         '.tree-line:first-child': {
             borderLeft: 'none',
             margin: 0
         },
         ul: {
-            paddingLeft: "15px",
+            paddingLeft: "1px",
             borderLeft: "1px solid #737373",
             marginLeft: "0px",
+            listStyle: "none",
             li: {
-                listSytle: "none",
                 ".one": {
                     color: "#ccc"
                 }
@@ -260,7 +274,15 @@
         return selfAn;
     };
 
-    var setToggleHideShow = function(elem, show){
+    var setToggleHideShow = function(elem, show, parent){
+        var li =parent.parentElement.parentElement;
+
+        var _closeElems = elem.parentElement.querySelectorAll('.close-br');
+        var _openElems = elem.parentElement.querySelectorAll('.open-br');
+  
+        var _openElem = _openElems[0];
+        var _closeElem = _closeElems[_closeElems.length -1];
+       
         if(elem._anim === undefined){
             elem._anim = setAnimation();
         }else{
@@ -271,6 +293,15 @@
                 opacity: 0
             });
             removeCSSClass(elem,'hide');
+            _closeEleminnerText = "";
+            _openEleminnerText = "";
+            if(li._valueType == types._ARRAY){
+                _openEleminnerText = "[";
+                _closeEleminnerText = "]";
+            }
+
+            _closeElem.innerText = _closeEleminnerText;
+            _openElem.innerText = _openEleminnerText;
             elem._anim.start(function(){
                 var _opacity = elem.style.opacity;
                 if(_opacity){
@@ -303,6 +334,17 @@
                     elem._anim.stop();
                     setCSSClass(elem, 'hide');
                     elem.removeAttribute('style');
+     
+                    _closeEleminnerText = "";
+                    _openEleminnerText = "{...}";
+                    if(li._valueType == types._ARRAY){
+                        _openEleminnerText = "[...]";
+                        _closeEleminnerText = "";
+  
+                    }
+
+                   _closeElem.innerText = _closeEleminnerText;
+                   _openElem.innerText = _openEleminnerText;
                 }else{
                     setStyle(elem, {
                         opacity: _opacity
@@ -316,66 +358,79 @@
     }
 
     var createSubElement = function (key, val, type) {
-        var ele = createElement("div");
+        var ele = createElement("LI");
+        var startNode = createElement('b');
+        var endNode = createElement('b');
+
         setCSSClass(ele, "subelement");
+
+        setCSSClass(startNode, "open-br");
+        setCSSClass(endNode, "close-br");
         var tp = _getType(val);
-        var startNode = "";
-        var endNode = "";
+
+
         if (tp === types._HTML_ELEMENT) {
             if (type === types._ARRAY) {
-                startNode = "[";
-                endNode = "]";
+                ele._valueType = types._ARRAY;
+                startNode.innerText = "[";
+                endNode.innerText = "]";
             } else {
-                startNode = "";
-                endNode = "";
+                ele._valueType = types._OBJECT;
+                startNode.innerText = "";
+                endNode.innerText = "";
             }
 
             carrotCount = carrotCount + 1;
+            //label
             var nam = createElement("P");
+           
             var carrot = createElement("div");
             carrot['carrotIndex'] = carrotCount;
             vDom['carrot_index' + carrotCount] = {
                 show: true
             };
+
             setAttribute(carrot, 'cons-index', 'carrot_' + carrotCount);
-            setCSSClass(carrot, ["arrow-right", "arrow"]);
+            setCSSClass(carrot, ["arrow-down", "arrow"]);
             carrot.addEventListener('click', function () {
 
 
                 var _id = this.carrotIndex;
-                var _remClass = 'arrow-right';
-                var _addClass = 'arrow-down';
+                var _remClass = 'arrow-down';
+                var _addClass = 'arrow-right';
 
                 if (vDom['carrot_index' + _id].show === false) {
-                    _addClass = 'arrow-right';
-                    _remClass = 'arrow-down';
-                } else {
-                    _remClass = 'arrow-right';
                     _addClass = 'arrow-down';
+                    _remClass = 'arrow-right';
+                } else {
+                    _remClass = 'arrow-down';
+                    _addClass = 'arrow-right';
                 }
                 vDom['carrot_index' + _id].show = !vDom['carrot_index' + _id].show;
                 removeCSSClass(this, _remClass);
                 setCSSClass(this, _addClass);
+        
                 if(this.parentElement.parentElement.children.length > 0){
-                    setToggleHideShow(this.parentElement.parentElement.children[1], vDom['carrot_index' + _id].show);
+                    setToggleHideShow(this.parentElement.parentElement.children[1], vDom['carrot_index' + _id].show, this);
                 }
 
             });
 
-            var btn = createElement("button");
-            btn.innerText = ":";
+            // var btn = createElement("button");
+            // btn.innerText = ":";
 
             var _nodeKey = document.createTextNode("" + key + ":");
 
-            var _node = document.createTextNode(startNode);
-            var _node2 = document.createTextNode(endNode);
+            // var _node = document.appendChild(startNode);
+            // var _node2 = document.appendChild(endNode);
             nam.appendChild(_nodeKey);
             nam.appendChild(carrot)
-            nam.appendChild(_node);
+            nam.appendChild(startNode);
             ele.appendChild(nam);
             ele.appendChild(val);
-            ele.appendChild(_node2);
+            ele.appendChild(endNode);
         } else {
+            ele._valueType = 'text';
             var _nodeKey = createElement("span");
             var _nodeVal = createElement("span");
 
@@ -386,8 +441,6 @@
             } else {
                 _nodeValText = document.createTextNode("" + val + "");
             }
-
-
             _nodeKey.appendChild(_nodeKeyText);
             _nodeVal.appendChild(_nodeValText);
 
@@ -401,9 +454,11 @@
     };
 
     var generateStack = function (ob) {
-        var ele = createElement("div");
-        setCSSClass(ele, "tree-line");
+        var ele = createElement("UL");
 
+        setCSSClass(ele, "tree-line");
+        //main-element
+        
         for (var i in ob) {
             var _ele = null;
 
