@@ -12,6 +12,9 @@
         backgroundColor: "#282828",
         color: "#D8D8D8",
         top: "0",
+        '.hide':{
+            'display':'none',
+        },
         padding: "20px",
         ".subelement": {
             paddingTop: "5px",
@@ -109,6 +112,14 @@
 
     };
 
+    var setStyle = function(element,styles){
+        var t = _getType(styles);
+        
+            for(var i in styles){
+                element.style[i] = styles[i];
+            }
+    }
+
     var removeCSSClass = function (element, cssClass) {
 
         var x = element.getAttribute("class");
@@ -139,7 +150,6 @@
             return types._UNDEFINED;
         }
         if (typeof obj === types._STRING) {
-            //var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
             return types._STRING;
         }
         if (typeof obj === types._NUMBER) {
@@ -195,6 +205,7 @@
         return element;
     };
 
+
     updateStyle = function (element, prop, value) {
         element.style[prop] = value;
     };
@@ -230,24 +241,79 @@
     };
 
     var setAnimation = function () {
-        var selfAn = this;
-        selfAn.anim;
-        selfAn.start = function ( callback,param) {
+        var selfAn = {};
+        selfAn['anim'] = undefined;
+        selfAn['start'] = function ( callback,param) {
             if(selfAn.anim){
                 clearInterval(selfAn.anim);
             }
             selfAn.anim = setInterval( function(param){ 
                 callback(param) 
-            }, 100, param, anim);
+            }, 1000/60, param, selfAn.anim);
         }
 
-        selfAn.stop = function(key){
+        selfAn['stop'] = function(key){
             if(selfAn.anim){
                 clearInterval(selfAn.anim);
             }
         }
         return selfAn;
     };
+
+    var setToggleHideShow = function(elem, show){
+        if(elem._anim === undefined){
+            elem._anim = setAnimation();
+        }else{
+            elem._anim.stop();
+        }
+        if(show){
+            setStyle(elem, {
+                opacity: 0
+            });
+            removeCSSClass(elem,'hide');
+            elem._anim.start(function(){
+                var _opacity = elem.style.opacity;
+                if(_opacity){
+                    _opacity = parseFloat(_opacity);
+                    _opacity = _opacity + 0.1;
+                }else{
+                    _opacity = 1;
+                }
+                if(_opacity > 1){
+                    elem._anim.stop();
+                    elem.removeAttribute('style');
+                }else{
+                    setStyle(elem, {
+                        opacity: _opacity
+                    });
+                }
+ 
+            })
+           
+        }else{
+            elem._anim.start(function(){
+                var _opacity = elem.style.opacity;
+                if(_opacity){
+                    _opacity = parseFloat(_opacity);
+                    _opacity = _opacity - 0.1;
+                }else{
+                    _opacity = 1;
+                }
+                if(_opacity < 0){
+                    elem._anim.stop();
+                    setCSSClass(elem, 'hide');
+                    elem.removeAttribute('style');
+                }else{
+                    setStyle(elem, {
+                        opacity: _opacity
+                    });
+                }
+ 
+            })
+            
+        }
+        
+    }
 
     var createSubElement = function (key, val, type) {
         var ele = createElement("div");
@@ -290,11 +356,10 @@
                 vDom['carrot_index' + _id].show = !vDom['carrot_index' + _id].show;
                 removeCSSClass(this, _remClass);
                 setCSSClass(this, _addClass);
-
-                if (anim[this.carrotIndex]) {
-                    anim[this.carrotIndex] = undefined;
-                    anim[this.carrotIndex] = setInterval(myTimer, 1000, anim[this.carrotIndex]);
+                if(this.parentElement.parentElement.children.length > 0){
+                    setToggleHideShow(this.parentElement.parentElement.children[1], vDom['carrot_index' + _id].show);
                 }
+
             });
 
             var btn = createElement("button");
