@@ -423,13 +423,8 @@
 
             });
 
-            // var btn = createElement("button");
-            // btn.innerText = ":";
-
             var _nodeKey = document.createTextNode("" + key + ":");
 
-            // var _node = document.appendChild(startNode);
-            // var _node2 = document.appendChild(endNode);
             nam.appendChild(_nodeKey);
             nam.appendChild(carrot)
             nam.appendChild(startNode);
@@ -501,20 +496,26 @@
     window.onresize = function(){
         setWidth();
     }
-    var init = function () {
+    window._Console = populateJSON = function (data, rootElement) {
         var cssClasses = window.ConsoleStyle(rootStyle);
         var root = document.body;
-        rootelem = createElement("div");
-        insertFirst(root, rootelem);
+        if(rootElement === undefined){
+            rootelem = createElement("div");
+            insertFirst(root, rootelem);
+        }else{
+            rootelem = rootElement;
+        }
         setCSSClass(rootelem, "console");
-        var t = generateStack(dummy);
+
+        var t = generateStack(data);
 
         rootelem.appendChild(t);
         setWidth()
         
     };
 
-    window.onload = function () {
-        init();
-    };
+    //  
+    // window.onload = function () {
+    //     populateJSON();
+    // };
 })(window);

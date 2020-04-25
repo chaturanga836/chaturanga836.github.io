@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,EAAE,gBAAgB,CAAA;EAC7B,UAAU,EAAE,IAAI;EAChB,gBAAgB,EAAE,OAAO;CAC5B",
+    "sources": [
+        "console.scss"
+    ],
+    "names": [],
+    "file": "console.css"
+}
