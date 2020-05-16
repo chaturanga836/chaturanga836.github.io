@@ -1,26 +1,114 @@
-body{
-    margin :0;
-    padding : 0;
-
-}
-
-.background-container{
-    width:100%;
+@import "sidebar";
+body {
     height: 100%;
-    background-image: url("../images/angelo-pantazis-zXVk8mNl9M0-unsplash.jpg");
-    background-size:cover;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-color: #4a4947;
+//   background: linear-gradient(
+//     90deg,
+//     rgba(44, 9, 121, 1) 0%,
+//     rgba(99, 9, 121, 1) 50%,
+//     rgba(255, 0, 164, 1) 100%
+//   );
+  .custom-toggler.navbar-toggler {
+    padding: 3rem 3rem;
+    border-color: rgba(255,255,255,.5);
+    border-radius: 50%;
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+
+  .topbar {
+    padding-left: 0px;
+    padding-right: 0px;
+    //background-color: rgba(255,255,255,0.1);
+    font-family: "Baloo Tamma 2", cursive;
+
+    .top-bar-col {
+      min-height: 80px;
+      color: #000;
+    }
+  }
+  .center-container {
+    width: 150px;
+    height: 150px;
+    border: #4a4947 5px solid;
+    border-radius: 50%;
+    overflow: hidden;
+
+    box-shadow: 0 0 0 2px rgba(255,255,255,.25);
+    .top-bar-img {
+        width: 150px;
+        height: 150px;
+        position:relative;
+        right: 20px;
+      }
+  }
+  .background-container {
+    width: 100%;
+    height: 100%;
+    //background-image: url("../images/angelo-pantazis-zXVk8mNl9M0-unsplash.jpg");
+    //background-color: #ff9933;
+    background-size: cover;
     z-index: -1000;
     position: absolute;
     /*filter: blur(1px);
   -webkit-filter: blur(1px); */
-}
+  }
 
-.bud-topNav{ 
+  .bud-topNav {
+    min-height: 100px;
+    border-bottom: 1px solid rgba(255,255,255,.25);
 
-    background-color: rgba(0,0,0,0.1);
-    min-height: 50px;
-
-    a {
-        color: #fff;
+    .active > .nav-link {
+      color: rgba(246, 241, 241, 0.8) !important;
     }
+
+    .nav-item {
+      min-width: 100px;
+      text-align: center;
+      border: 1px solid rgba(246, 241, 241, 0.5);
+      margin: 0px 2px 0px 2px;
+      .nav-link {
+        color: rgba(246, 241, 241, 0.5);
+        &:focus,
+        &:hover {
+          color: rgba(246, 241, 241, 0.8) !important;
+        }
+      }
+    }
+  }
+
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 575.98px) {
+  }
+
+  // Small devices (landscape phones, less than 768px)
+  @media (max-width: 767.98px) {
+    .center-container {
+      left: 40%;
+      min-width: 100px;
+      min-height: 100px;
+      top: -60px;
+    }
+    .topbar {
+      .top-bar-col {
+        .top-bar-img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  // Medium devices (tablets, less than 992px)
+  @media (max-width: 991.98px) {
+  }
+
+  // Large devices (desktops, less than 1200px)
+  @media (max-width: 1199.98px) {
+  }
 }
