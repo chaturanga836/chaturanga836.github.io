@@ -3,15 +3,15 @@
         BOOLEAN: "#f24b18",
         TEXT: "#538cc6",
         NUMBER: "#ffd24d",
-        FUNCTION: "#f2f2f2"
+        FUNCTION: "#f2f2f2",
+        URL: "#26d606"
     };
 
     var rootelem;
     var rootStyle = {
-        position: "absolute",
         minHeight: "50px",
         zIndex: "1000",
-        backgroundColor: "#282828",
+        backgroundColor: "#282828 !important",
         color: "#D8D8D8",
         top: "0",
         left:'0',
@@ -97,7 +97,8 @@
         _OBJECT: "object",
         _HTML_ELEMENT: "HTMLElement",
         _BOOLEAN: "boolean",
-        _FUNCTION: "function"
+        _FUNCTION: "function",
+        _URL: "url"
     };
 
     var vDom = {};
@@ -138,7 +139,7 @@
             }
     }
 
-    var removeCSSClass = function (element, cssClass) {
+     function removeCSSClass(element, cssClass) {
 
         var x = element.getAttribute("class");
         if (x) {
@@ -163,11 +164,31 @@
         }
     };
 
-    var _getType = function (obj) {
+    function isLink(value){
+
+        var expression = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gi;
+        var regex = new RegExp(expression);
+        
+        return value.match(regex)
+    }
+
+    function setLink(element, value){
+       var _elem =  createElement("a",value);
+       setAttribute(_elem,"href",value);
+       element.innerText = "";
+       updateStyle(_elem, "color", colorCodes.URL);
+       element.appendChild(_elem);
+    }
+
+     function _getType(obj) {
         if (typeof obj === types._UNDEFINED) {
             return types._UNDEFINED;
         }
         if (typeof obj === types._STRING) {
+
+            if( isLink(obj) ){
+                return types._URL;
+            }
             return types._STRING;
         }
         if (typeof obj === types._NUMBER) {
@@ -200,7 +221,7 @@
         throw "unknow object";
     };
 
-    var createElement = function (tagName, textNode) {
+    function createElement(tagName, textNode) {
         var para = document.createElement(tagName);
         if (
             textNode !== undefined &&
@@ -213,7 +234,7 @@
         return para;
     };
 
-    var setAttribute = function (element, attr, value) {
+    function setAttribute(element, attr, value) {
         if (value) {
             element.setAttribute(attr, value);
         } else {
@@ -224,11 +245,11 @@
     };
 
 
-    updateStyle = function (element, prop, value) {
+    function updateStyle(element, prop, value) {
         element.style[prop] = value;
     };
 
-    var insertFirst = function (parentElem, newElem) {
+     function insertFirst(parentElem, newElem) {
         var chil = parentElem.children;
 
         if (chil.length > 0) {
@@ -240,7 +261,7 @@
         return parentElem;
     };
 
-    var textColor = function (element, value) {
+    function textColor(element, value) {
         var t = _getType(value);
         if (t === types._NUMBER) {
             updateStyle(element, "color", colorCodes.NUMBER);
@@ -252,13 +273,18 @@
             return element;
         }
 
+        if(t === types._URL){
+            setLink(element,value);
+            
+        }
+
         if (t === types._STRING) {
             updateStyle(element, "color", colorCodes.TEXT);
             return element;
         }
     };
 
-    var setAnimation = function () {
+    function setAnimation() {
         var selfAn = {};
         selfAn['anim'] = undefined;
         selfAn['start'] = function ( callback,param) {
@@ -281,7 +307,7 @@
         return selfAn;
     };
 
-    var setToggleHideShow = function(elem, show, parent){
+    function setToggleHideShow(elem, show, parent){
         var li =parent.parentElement.parentElement;
 
         var _closeElems = elem.parentElement.querySelectorAll('.close-br');
@@ -364,7 +390,7 @@
         
     }
 
-    var createSubElement = function (key, val, type) {
+     function createSubElement(key, val, type) {
         var ele = createElement("LI");
         var startNode = createElement('b');
         var endNode = createElement('b');
@@ -486,17 +512,17 @@
          border = parseFloat(_style.borderLeftWidth) + parseFloat(_style.borderRightWidth);
          height = parseFloat(_style.height);
 
-        setStyle(rootelem,{'width':(window.innerWidth -17)+'px'});
-        if(height < window.innerHeight){
-            setStyle(rootelem,{'height':(window.innerHeight)+'px'});
-        }
     
     }
 
     window.onresize = function(){
         setWidth();
     }
-    window._Console = populateJSON = function (data, rootElement) {
+
+var _Console = {
+};
+
+    _Console.setElement = function ( rootElement) {
         var cssClasses = window.ConsoleStyle(rootStyle);
         var root = document.body;
         if(rootElement === undefined){
@@ -507,15 +533,21 @@
         }
         setCSSClass(rootelem, "console");
 
-        var t = generateStack(data);
 
-        rootelem.appendChild(t);
         setWidth()
         
     };
 
+    _Console.populateJSON = function( data){
+        var t = generateStack(data);
+        rootelem.innerHTML = "";
+        rootelem.appendChild(t);
+    }
+
+    window._Console = _Console;
     //  
-    // window.onload = function () {
-    //     populateJSON();
-    // };
+    window.onload = function () {
+        var elem = document.getElementById('present');
+        
+    };
 })(window);
