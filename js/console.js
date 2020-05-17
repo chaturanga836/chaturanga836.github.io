@@ -14,16 +14,16 @@
         backgroundColor: "#282828 !important",
         color: "#D8D8D8",
         top: "0",
-        left:'0',
-        margin:'0',
+        left: '0',
+        margin: '0',
         padding: '0px',
-        '.hide':{
-            'display':'none',
+        '.hide': {
+            'display': 'none',
         },
-        '.main-element':{
+        '.main-element': {
 
         },
-        '.label':{
+        '.label': {
             borderBottom: '1px dashed #474342',
             padding: '0px 8px',
             height: '1px',
@@ -39,7 +39,7 @@
                 paddingLeft: "20px"
             }
         },
-        '.border-element':{
+        '.border-element': {
             display: "inline-block",
         },
         '.tree-line': {
@@ -131,15 +131,15 @@
 
     };
 
-    var setStyle = function(element,styles){
+    var setStyle = function (element, styles) {
         var t = _getType(styles);
-        
-            for(var i in styles){
-                element.style[i] = styles[i];
-            }
+
+        for (var i in styles) {
+            element.style[i] = styles[i];
+        }
     }
 
-     function removeCSSClass(element, cssClass) {
+    function removeCSSClass(element, cssClass) {
 
         var x = element.getAttribute("class");
         if (x) {
@@ -164,29 +164,30 @@
         }
     };
 
-    function isLink(value){
+    function isLink(value) {
 
         var expression = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gi;
         var regex = new RegExp(expression);
-        
+
         return value.match(regex)
     }
 
-    function setLink(element, value){
-       var _elem =  createElement("a",value);
-       setAttribute(_elem,"href",value);
-       element.innerText = "";
-       updateStyle(_elem, "color", colorCodes.URL);
-       element.appendChild(_elem);
+    function setLink(element, value) {
+        var _elem = createElement("a", value);
+        setAttribute(_elem, "href", value);
+        setAttribute(_elem, "target", "_blank");
+        element.innerText = "";
+        updateStyle(_elem, "color", colorCodes.URL);
+        element.appendChild(_elem);
     }
 
-     function _getType(obj) {
+    function _getType(obj) {
         if (typeof obj === types._UNDEFINED) {
             return types._UNDEFINED;
         }
         if (typeof obj === types._STRING) {
 
-            if( isLink(obj) ){
+            if (isLink(obj)) {
                 return types._URL;
             }
             return types._STRING;
@@ -249,7 +250,7 @@
         element.style[prop] = value;
     };
 
-     function insertFirst(parentElem, newElem) {
+    function insertFirst(parentElem, newElem) {
         var chil = parentElem.children;
 
         if (chil.length > 0) {
@@ -273,9 +274,9 @@
             return element;
         }
 
-        if(t === types._URL){
-            setLink(element,value);
-            
+        if (t === types._URL) {
+            setLink(element, value);
+
         }
 
         if (t === types._STRING) {
@@ -287,19 +288,19 @@
     function setAnimation() {
         var selfAn = {};
         selfAn['anim'] = undefined;
-        selfAn['start'] = function ( callback,param) {
-            if(selfAn.anim){
+        selfAn['start'] = function (callback, param) {
+            if (selfAn.anim) {
                 clearInterval(selfAn.anim);
                 setWidth();
             }
-            selfAn.anim = setInterval( function(param){ 
+            selfAn.anim = setInterval(function (param) {
                 callback(param);
-                setWidth(); 
-            }, 1000/60, param, selfAn.anim);
+                setWidth();
+            }, 1000 / 60, param, selfAn.anim);
         }
 
-        selfAn['stop'] = function(key){
-            if(selfAn.anim){
+        selfAn['stop'] = function (key) {
+            if (selfAn.anim) {
                 clearInterval(selfAn.anim);
                 setWidth();
             }
@@ -307,90 +308,90 @@
         return selfAn;
     };
 
-    function setToggleHideShow(elem, show, parent){
-        var li =parent.parentElement.parentElement;
+    function setToggleHideShow(elem, show, parent) {
+        var li = parent.parentElement.parentElement;
 
         var _closeElems = elem.parentElement.querySelectorAll('.close-br');
         var _openElems = elem.parentElement.querySelectorAll('.open-br');
-  
+
         var _openElem = _openElems[0];
-        var _closeElem = _closeElems[_closeElems.length -1];
-       
-        if(elem._anim === undefined){
+        var _closeElem = _closeElems[_closeElems.length - 1];
+
+        if (elem._anim === undefined) {
             elem._anim = setAnimation();
-        }else{
+        } else {
             elem._anim.stop();
         }
-        if(show){
+        if (show) {
             setStyle(elem, {
                 opacity: 0
             });
-            removeCSSClass(elem,'hide');
+            removeCSSClass(elem, 'hide');
             _closeEleminnerText = "";
             _openEleminnerText = "";
-            if(li._valueType == types._ARRAY){
+            if (li._valueType == types._ARRAY) {
                 _openEleminnerText = "[";
                 _closeEleminnerText = "]";
             }
 
             _closeElem.innerText = _closeEleminnerText;
             _openElem.innerText = _openEleminnerText;
-            elem._anim.start(function(){
+            elem._anim.start(function () {
                 var _opacity = elem.style.opacity;
-                if(_opacity){
+                if (_opacity) {
                     _opacity = parseFloat(_opacity);
                     _opacity = _opacity + 0.1;
-                }else{
+                } else {
                     _opacity = 1;
                 }
-                if(_opacity > 1){
+                if (_opacity > 1) {
                     elem._anim.stop();
                     elem.removeAttribute('style');
-                }else{
+                } else {
                     setStyle(elem, {
                         opacity: _opacity
                     });
                 }
- 
+
             })
-           
-        }else{
-            elem._anim.start(function(){
+
+        } else {
+            elem._anim.start(function () {
                 var _opacity = elem.style.opacity;
-                if(_opacity){
+                if (_opacity) {
                     _opacity = parseFloat(_opacity);
                     _opacity = _opacity - 0.1;
-                }else{
+                } else {
                     _opacity = 1;
                 }
-                if(_opacity < 0){
+                if (_opacity < 0) {
                     elem._anim.stop();
                     setCSSClass(elem, 'hide');
                     elem.removeAttribute('style');
-     
+
                     _closeEleminnerText = "";
                     _openEleminnerText = "{...}";
-                    if(li._valueType == types._ARRAY){
+                    if (li._valueType == types._ARRAY) {
                         _openEleminnerText = "[...]";
                         _closeEleminnerText = "";
-  
+
                     }
 
-                   _closeElem.innerText = _closeEleminnerText;
-                   _openElem.innerText = _openEleminnerText;
-                }else{
+                    _closeElem.innerText = _closeEleminnerText;
+                    _openElem.innerText = _openEleminnerText;
+                } else {
                     setStyle(elem, {
                         opacity: _opacity
                     });
                 }
- 
+
             })
-            
+
         }
-        
+
     }
 
-     function createSubElement(key, val, type) {
+    function createSubElement(key, val, type) {
         var ele = createElement("LI");
         var startNode = createElement('b');
         var endNode = createElement('b');
@@ -416,7 +417,7 @@
             carrotCount = carrotCount + 1;
             //label
             var nam = createElement("P");
-           
+
             var carrot = createElement("div");
             carrot['carrotIndex'] = carrotCount;
             vDom['carrot_index' + carrotCount] = {
@@ -442,8 +443,8 @@
                 vDom['carrot_index' + _id].show = !vDom['carrot_index' + _id].show;
                 removeCSSClass(this, _remClass);
                 setCSSClass(this, _addClass);
-        
-                if(this.parentElement.parentElement.children.length > 0){
+
+                if (this.parentElement.parentElement.children.length > 0) {
                     setToggleHideShow(this.parentElement.parentElement.children[1], vDom['carrot_index' + _id].show, this);
                 }
 
@@ -486,7 +487,7 @@
 
         setCSSClass(ele, "tree-line");
         //main-element
-        
+
         for (var i in ob) {
             var _ele = null;
 
@@ -505,49 +506,37 @@
         return ele;
     };
 
-    var setWidth = function(){
+    var setWidth = function () {
         var _style = rootelem.currentStyle || window.getComputedStyle(rootelem);
-        var margin = parseFloat(_style.marginLeft) + parseFloat(_style.marginRight),
-         padding = parseFloat(_style.paddingLeft) + parseFloat(_style.paddingRight),
-         border = parseFloat(_style.borderLeftWidth) + parseFloat(_style.borderRightWidth);
-         height = parseFloat(_style.height);
+        height = parseFloat(_style.height);
 
-    
+
     }
 
-    window.onresize = function(){
-        setWidth();
-    }
+    var _Console = {};
 
-var _Console = {
-};
-
-    _Console.setElement = function ( rootElement) {
-        var cssClasses = window.ConsoleStyle(rootStyle);
+    _Console.setElement = function (rootElement) {
+       window.ConsoleStyle(rootStyle);
         var root = document.body;
-        if(rootElement === undefined){
+        if (rootElement === undefined) {
             rootelem = createElement("div");
             insertFirst(root, rootelem);
-        }else{
+        } else {
             rootelem = rootElement;
         }
         setCSSClass(rootelem, "console");
 
 
         setWidth()
-        
+
     };
 
-    _Console.populateJSON = function( data){
+    _Console.populateJSON = function (data) {
         var t = generateStack(data);
         rootelem.innerHTML = "";
         rootelem.appendChild(t);
     }
 
     window._Console = _Console;
-    //  
-    window.onload = function () {
-        var elem = document.getElementById('present');
-        
-    };
+
 })(window);
