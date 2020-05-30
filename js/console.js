@@ -1,4 +1,4 @@
-(function (window) {
+(function (window) {    
     var colorCodes = {
         BOOLEAN: "#f24b18",
         TEXT: "#538cc6",
@@ -10,12 +10,10 @@
     var rootelem;
     var rootStyle = {
         minHeight: "50px",
-        zIndex: "1000",
         backgroundColor: "#282828 !important",
         color: "#D8D8D8",
-        top: "0",
-        left: '0',
         margin: '0',
+        height: '100%',
         padding: '0px',
         '.hide': {
             'display': 'none',
@@ -105,6 +103,7 @@
     var carrotCount = 0;
 
     var setCSSClass = function (element, cssClass) {
+
         var t = _getType(cssClass);
         var _x = element.getAttribute("class");
         var _classes = [];
@@ -127,7 +126,7 @@
                 _classes.push(cssClass);
             }
         }
-        setAttribute(element, "class", _classes.join(' '));
+        return setAttribute(element, "class", _classes.join(' '));
 
     };
 
@@ -482,6 +481,7 @@
         return ele;
     };
 
+
     var generateStack = function (ob) {
         var ele = createElement("UL");
 
@@ -506,28 +506,25 @@
         return ele;
     };
 
+
     var setWidth = function () {
         var _style = rootelem.currentStyle || window.getComputedStyle(rootelem);
         height = parseFloat(_style.height);
-
-
-    }
+    };
 
     var _Console = {};
 
     _Console.setElement = function (rootElement) {
-       window.ConsoleStyle(rootStyle);
+        window.ConsoleStyle(rootStyle);
         var root = document.body;
-        if (rootElement === undefined) {
-            rootelem = createElement("div");
-            insertFirst(root, rootelem);
-        } else {
+        if (rootElement) {
             rootelem = rootElement;
+            setCSSClass(rootelem, "console");
+
+            setWidth()
+        } else {
+            console.error("element required")
         }
-        setCSSClass(rootelem, "console");
-
-
-        setWidth()
 
     };
 

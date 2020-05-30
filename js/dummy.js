@@ -1,5 +1,4 @@
 (function (window) {
-
   $(document).ready(function () {
 
     $(window).resize(function() {
@@ -14,7 +13,7 @@
     $('#editor').on('input', function (e) {
       var value = $(this).text();
       value = value.trim().replace(/\s{2,}/g," ");
-
+      
       try {
         if (value !== '') {
           var _val = JSON.parse("" + value + "");
