@@ -32,7 +32,12 @@
     { "name": "Laravel", "category": "backend" },
     { "name": "Python", "category": "backend" },
     { "name": "AWS", "category": "cloud" },
-    { "name": "Apache Ranger", "category": "data" },
+    { "name": "Postgres", "category": "data" },
+    { "name": "MySQL", "category": "data" },
+    { "name": "Docker", "category": "infrastructure" },
+    { "name": "Jenkins", "category": "infrastructure" },
+    { "name": "Dozzle", "category": "infrastructure" },
+    { "name": "Keycloak", "category": "Authentication" },
     { "name": "Minio", "category": "data" },
     { "name": "Hudi", "category": "data" },
     { "name": "Trino", "category": "data" },
@@ -41,11 +46,11 @@
   "projectsIntro": "Professional and personal work across e-commerce, government digital services, fintech, and data infrastructure.",
   "projects": [
     {
-      "name": "Data Connections Manager",
+      "name": "Data Pieline and workflow Manager",
       "period": "Personal Project",
-      "role": "Architect / Lead Developer",
+      "role": "Architect / Lead Engineer/ Developer",
       "description": "Scalable data pipeline platform for managing REST API connections, workspace-based integrations, and automated data flows across enterprise analytics infrastructure.",
-      "technologies": ["React", "AWS", "Apache Ranger", "Minio", "Hudi", "Trino"],
+      "technologies": ["React/next Js", "AWS", "Postgres", "Python/FastAPI", "Docker", "Jenkins", "Dozzle","Keycloak", "Minio", "Hudi"],
       "link": "http://13.200.160.10:3000/workspaces/1/connections/rest-api/groups/3",
       "linkLabel": "View Live Demo",
       "highlight": true,
@@ -59,11 +64,11 @@
       "technologies": ["Angular 10", "C# .NET", "Azure"]
     },
     {
-      "name": "Tamm Abu Dhabi",
+      "name": "Tamm Abu Dhabi /Wipro",
       "period": "Jan 2022 — April 2022",
       "role": "Frontend Developer",
       "description": "Government digital services platform designed to centralize and deliver Abu Dhabi government services online.",
-      "technologies": ["React", "Camunda"]
+      "technologies": ["React js", "Camunda"]
     },
     {
       "name": "Cryptoworth",
@@ -82,7 +87,7 @@
     {
       "name": "Ceylon Assets",
       "period": "Ongoing",
-      "role": "Frontend Developer",
+      "role": "Frontend Enginner",
       "description": "Platform enabling users to monitor asset values including index funds, money market funds, and dollar-bound funds.",
       "technologies": ["React"],
       "status": "Ongoing"
@@ -108,6 +113,27 @@
       "role": "Xinfinit Pvt Ltd",
       "description": "Crypto trading platform enabling users to trade crypto coins through a unified exchange experience.",
       "technologies": ["Crypto Trading", "Exchange Platform"]
+    },
+    {
+      "name": "MK2",
+      "period": "Mar 2017 — Jan 2019",
+      "role": "LayoutIndex — Senior Software Engineer",
+      "description": "Theater management system for MK2, a France-based event management organization that provides facilities to manage events and movies.",
+      "technologies": ["Laravel", "React", "MySQL", "Node.js", "Express"]
+    },
+    {
+      "name": "Scope Cinemas",
+      "period": "Mar 2017 — Jan 2019",
+      "role": "LayoutIndex — Senior Software Engineer",
+      "description": "Theater management system for a Sri Lankan cinema chain operating 7 theatres in Colombo.",
+      "technologies": ["CodeIgniter", "MySQL", "AngularJS"]
+    },
+    {
+      "name": "444-app",
+      "period": "Mar 2017 — Jan 2019",
+      "role": "LayoutIndex — Senior Software Engineer",
+      "description": "Booking platform built with Phalcon and MySQL for managing reservations and customer workflows.",
+      "technologies": ["Phalcon", "MySQL", "Redis", "AngularJS"]
     }
   ],
   "experience": [
