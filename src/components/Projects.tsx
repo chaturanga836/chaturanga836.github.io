@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { resume } from "../data/resume";
+import ProjectGallery from "./ProjectGallery";
 import SectionHeading from "./SectionHeading";
 
 export default function Projects() {
@@ -60,6 +61,10 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+
+                {project.screenshots && project.screenshots.length > 0 && (
+                  <ProjectGallery screenshots={project.screenshots} />
+                )}
 
                 {project.link && (
                   <a

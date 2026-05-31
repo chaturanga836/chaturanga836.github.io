@@ -55,7 +55,23 @@
       "link": "http://13.200.160.10:3000/workspaces/1/connections/rest-api/groups/3",
       "linkLabel": "View Live Demo",
       "highlight": true,
-      "highlightLabel": "Featured Personal Project"
+      "highlightLabel": "Featured Personal Project",
+      "screenshots": [
+        { "src": "/img/connection_table.jpg", "caption": "REST API connections overview" },
+        { "src": "/img/group_table.jpg", "caption": "Connection groups" },
+        { "src": "/img/new_group.jpg", "caption": "Create connection group" },
+        { "src": "/img/create_new_edpoint.jpg", "caption": "Create REST API endpoint" },
+        { "src": "/img/connection_variable.jpg", "caption": "Connection variables" },
+        { "src": "/img/variable_param.jpg", "caption": "Variable parameters" },
+        { "src": "/img/variable_after.jpg", "caption": "Configured variables" },
+        { "src": "/img/custome_api_test.jpg", "caption": "Custom API test runner" },
+        { "src": "/img/pipeline_table.jpg", "caption": "Pipeline list" },
+        { "src": "/img/create_pipline.jpg", "caption": "Create pipeline workflow" },
+        { "src": "/img/task_node_table.jpg", "caption": "Task nodes" },
+        { "src": "/img/task_node_create_edit.jpg", "caption": "Task node editor" },
+        { "src": "/img/run_history.jpg", "caption": "Pipeline run history" },
+        { "src": "/img/run_history_details.jpg", "caption": "Run history details" }
+      ]
     },
     {
       "name": "PHD Deals",

@@ -29,6 +29,11 @@ export interface Skill {
   category: string;
 }
 
+export interface ProjectScreenshot {
+  src: string;
+  caption: string;
+}
+
 export interface Project {
   name: string;
   period: string;
@@ -40,6 +45,7 @@ export interface Project {
   highlight?: boolean;
   highlightLabel?: string;
   status?: string;
+  screenshots?: ProjectScreenshot[];
 }
 
 export interface Experience {
