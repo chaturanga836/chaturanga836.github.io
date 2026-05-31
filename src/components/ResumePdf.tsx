@@ -21,13 +21,27 @@ export default function ResumePdf() {
             <h1 className="resume-name">{fullName}</h1>
             <p className="resume-title">{profile.title}</p>
             <p className="resume-contact">
-              {profile.location} · {profile.email} · {profile.phone}
+              {profile.location} ·{" "}
+              <a href={`mailto:${profile.email}`} className="resume-contact-link">
+                {profile.email}
+              </a>
+              {" · "}
+              {profile.phone}
             </p>
             <p className="resume-contact">
-              {shortenUrl(profile.linkedin)} · {shortenUrl(profile.github)}
+              <a href={profile.linkedin} className="resume-contact-link">
+                {shortenUrl(profile.linkedin)}
+              </a>
+              {" · "}
+              <a href={profile.github} className="resume-contact-link">
+                {shortenUrl(profile.github)}
+              </a>
             </p>
             <p className="resume-contact">
-              Portfolio: {shortenUrl(profile.website)}
+              Portfolio:{" "}
+              <a href={profile.website} className="resume-contact-link">
+                {shortenUrl(profile.website)}
+              </a>
             </p>
           </div>
         </div>
