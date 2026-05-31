@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --primary: 187 85% 53%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+    --border: 222 30% 18%;
+    --radius: 0.75rem;
+    --gradient-primary: linear-gradient(135deg, hsl(187 85% 53%) 0%, hsl(262 83% 58%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(187 85% 63%) 0%, hsl(262 83% 68%) 50%, hsl(187 85% 53%) 100%);
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(187 85% 53% / 0.15), transparent);
+    --shadow-glow: 0 0 40px hsl(187 85% 53% / 0.15);
+    --shadow-card: 0 4px 24px hsl(222 47% 3% / 0.4);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-text);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass {
+    background: rgba(11, 17, 30, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(222 30% 18% / 0.5);
+  }
+
+  .skill-tag {
+    @apply rounded-full px-4 py-2 text-sm font-medium transition-all duration-300;
+    background: hsl(222 47% 12%);
+    border: 1px solid hsl(222 30% 22%);
+  }
+
+  .skill-tag:hover {
+    border-color: hsl(187 85% 53% / 0.5);
+    box-shadow: 0 0 20px hsl(187 85% 53% / 0.1);
+  }
+
+  .timeline-dot {
+    @apply h-3 w-3 rounded-full;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 12px hsl(187 85% 53% / 0.4);
+  }
+
+  .projects-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project-featured {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .project-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, hsl(187 85% 53% / 0.15), hsl(262 83% 58% / 0.15));
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-featured {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

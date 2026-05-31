@@ -1,0 +1,155 @@
+{
+  "profile": {
+    "firstName": "Buddhika",
+    "lastName": "Chathuranga",
+    "title": "Full-Stack Architect / Lead Developer",
+    "location": "Malabe, Sri Lanka",
+    "email": "chaturanga836@gmail.com",
+    "phone": "+94 757225338",
+    "github": "https://github.com/chaturanga836",
+    "linkedin": "https://www.linkedin.com/in/buddhika-chathuranga-39165895/",
+    "photo": "/profile.jpg"
+  },
+  "about": {
+    "titlePrefix": "Building",
+    "titleHighlight": "Scalable Solutions",
+    "titleSuffix": "Across the Stack",
+    "paragraphs": [
+      "Full-Stack Architect/Lead Developer with expertise spanning modern application development and enterprise data infrastructure. Core technical skills include React, Next.js, and Angular on the front-end, with robust back-end proficiency in Laravel (up to v10) and Python.",
+      "Comprehensive experience leveraging AWS for cloud architecture and significant expertise in the cutting-edge Data Lake ecosystem, utilizing tools like Apache Ranger, Minio, Hudi, and Trino. Proven ability to deliver robust, scalable, and data-driven solutions across the entire software lifecycle."
+    ],
+    "stats": [
+      { "value": "13+", "label": "Years Experience" },
+      { "value": "10+", "label": "Major Projects" },
+      { "value": "5+", "label": "Companies" },
+      { "value": "BSc", "label": "Software Eng." }
+    ]
+  },
+  "skills": [
+    { "name": "React", "category": "frontend" },
+    { "name": "Next.js", "category": "frontend" },
+    { "name": "Angular", "category": "frontend" },
+    { "name": "Laravel", "category": "backend" },
+    { "name": "Python", "category": "backend" },
+    { "name": "AWS", "category": "cloud" },
+    { "name": "Apache Ranger", "category": "data" },
+    { "name": "Minio", "category": "data" },
+    { "name": "Hudi", "category": "data" },
+    { "name": "Trino", "category": "data" },
+    { "name": "Full-Stack Development", "category": "general" }
+  ],
+  "projectsIntro": "Professional and personal work across e-commerce, government digital services, fintech, and data infrastructure.",
+  "projects": [
+    {
+      "name": "Data Connections Manager",
+      "period": "Personal Project",
+      "role": "Architect / Lead Developer",
+      "description": "Scalable data pipeline platform for managing REST API connections, workspace-based integrations, and automated data flows across enterprise analytics infrastructure.",
+      "technologies": ["React", "AWS", "Apache Ranger", "Minio", "Hudi", "Trino"],
+      "link": "http://13.200.160.10:3000/workspaces/1/connections/rest-api/groups/3",
+      "linkLabel": "View Live Demo",
+      "highlight": true,
+      "highlightLabel": "Featured Personal Project"
+    },
+    {
+      "name": "PHD Deals",
+      "period": "May 2023 — March 2024",
+      "role": "Full-Stack Developer",
+      "description": "E-commerce platform for trading games and hobby items.",
+      "technologies": ["Angular 10", "C# .NET", "Azure"]
+    },
+    {
+      "name": "Tamm Abu Dhabi",
+      "period": "Jan 2022 — April 2022",
+      "role": "Frontend Developer",
+      "description": "Government digital services platform designed to centralize and deliver Abu Dhabi government services online.",
+      "technologies": ["React", "Camunda"]
+    },
+    {
+      "name": "Cryptoworth",
+      "period": "2020 — 2024",
+      "role": "Full-Stack Developer",
+      "description": "Platform for crypto traders to sync transaction history from wallets and exchanges, then calculate cost basis, gains/losses, and tax values.",
+      "technologies": ["Angular 7", "Laravel", "Node.js", "MySQL"]
+    },
+    {
+      "name": "Subclub",
+      "period": "Jan 2020 — May 2020",
+      "role": "Full-Stack Developer",
+      "description": "Platform for shop owners to register stores and publish products, with customer subscriptions to packages on weekly or monthly plans.",
+      "technologies": ["Angular 7", "Laravel", "Node.js", "MySQL"]
+    },
+    {
+      "name": "Ceylon Assets",
+      "period": "Ongoing",
+      "role": "Frontend Developer",
+      "description": "Platform enabling users to monitor asset values including index funds, money market funds, and dollar-bound funds.",
+      "technologies": ["React"],
+      "status": "Ongoing"
+    },
+    {
+      "name": "Kipstore",
+      "period": "On Hold",
+      "role": "Developer",
+      "description": "Platform for users to analyze their business model.",
+      "technologies": ["AngularJS", "Angular 9"],
+      "status": "On Hold"
+    },
+    {
+      "name": "Dxone",
+      "period": "Dec 2019 — 2020",
+      "role": "Xinfinit Pvt Ltd — Lead / Scrum Master",
+      "description": "Crypto trading platform allowing users to connect wallets and exchange coins through a KYC-verified registration process.",
+      "technologies": ["Crypto Trading", "KYC", "Wallet Integration"]
+    },
+    {
+      "name": "Mountain Wolf",
+      "period": "Dec 2019 — 2020",
+      "role": "Xinfinit Pvt Ltd",
+      "description": "Crypto trading platform enabling users to trade crypto coins through a unified exchange experience.",
+      "technologies": ["Crypto Trading", "Exchange Platform"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Freelancer",
+      "company": "Self-Employed",
+      "period": "Jan 2019",
+      "description": "Projects include Scalable Data Analytics Platform, PHD Deals, Tamm Abu Dhabi, Subclub, Cryptoworth, Kipstore, Ceylon Assets."
+    },
+    {
+      "title": "Senior Software Engineering Consultant",
+      "company": "Keeneye Solutions",
+      "location": "Colombo, Sri Lanka",
+      "period": "Oct 2019 — Dec 2019",
+      "description": "Projects include Cedar Electronics."
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "LayoutIndex",
+      "location": "Colombo, Sri Lanka",
+      "period": "Mar 2017 — Jan 2019",
+      "description": "Projects include MK2, Scope Cinemas, 444-app."
+    },
+    {
+      "title": "Associate Software Engineer",
+      "company": "Frontline Developers",
+      "location": "Dehiwala, Sri Lanka",
+      "period": "Jun 2015 — Dec 2016",
+      "description": "Projects include LearmnerSocial."
+    },
+    {
+      "title": "Developer",
+      "company": "Rapid Venture (Pvt) Ltd",
+      "location": "Malabe, Sri Lanka",
+      "period": "Jan 2012 — Mar 2015",
+      "description": "Projects include Student management system, Account Ledger management system, Product Line management system."
+    }
+  ],
+  "education": {
+    "degree": "BSc in Software Engineering",
+    "school": "Plymouth University",
+    "period": "2012 — 2016",
+    "honors": "2nd Lower Class"
+  }
+}
