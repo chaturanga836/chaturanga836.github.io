@@ -6,23 +6,27 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --primary: 187 85% 53%;
-    --primary-foreground: 222 47% 6%;
-    --secondary: 222 47% 12%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 222 30% 15%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
-    --border: 222 30% 18%;
+    --brand-blue: 212 82% 58%;
+    --brand-orange: 28 98% 59%;
+    --brand-purple: 277 48% 56%;
+
+    --background: 0 0% 100%;
+    --foreground: 222 47% 14%;
+    --primary: var(--brand-blue);
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 14%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 42%;
+    --accent: var(--brand-purple);
+    --accent-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
     --radius: 0.75rem;
-    --gradient-primary: linear-gradient(135deg, hsl(187 85% 53%) 0%, hsl(262 83% 58%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(187 85% 63%) 0%, hsl(262 83% 68%) 50%, hsl(187 85% 53%) 100%);
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(187 85% 53% / 0.15), transparent);
-    --shadow-glow: 0 0 40px hsl(187 85% 53% / 0.15);
-    --shadow-card: 0 4px 24px hsl(222 47% 3% / 0.4);
+    --gradient-primary: linear-gradient(135deg, #3a8def 0%, #9554c8 100%);
+    --gradient-text: linear-gradient(135deg, #3a8def 0%, #9554c8 50%, #fd8d30 100%);
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgb(58 141 239 / 0.12), transparent);
+    --shadow-glow: 0 0 40px rgb(58 141 239 / 0.18);
+    --shadow-card: 0 4px 24px rgb(15 23 42 / 0.08);
   }
 
   * {
@@ -65,26 +69,26 @@
   }
 
   .glass {
-    background: rgba(11, 17, 30, 0.7);
+    background: rgb(255 255 255 / 0.85);
     backdrop-filter: blur(12px);
-    border: 1px solid hsl(222 30% 18% / 0.5);
+    border: 1px solid hsl(var(--border));
   }
 
   .skill-tag {
     @apply rounded-full px-4 py-2 text-sm font-medium transition-all duration-300;
-    background: hsl(222 47% 12%);
-    border: 1px solid hsl(222 30% 22%);
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
   }
 
   .skill-tag:hover {
-    border-color: hsl(187 85% 53% / 0.5);
-    box-shadow: 0 0 20px hsl(187 85% 53% / 0.1);
+    border-color: rgb(58 141 239 / 0.45);
+    box-shadow: 0 0 20px rgb(58 141 239 / 0.12);
   }
 
   .timeline-dot {
     @apply h-3 w-3 rounded-full;
     background: var(--gradient-primary);
-    box-shadow: 0 0 12px hsl(187 85% 53% / 0.4);
+    box-shadow: 0 0 12px rgb(58 141 239 / 0.35);
   }
 
   .projects-grid {
@@ -107,9 +111,9 @@
     line-height: 1rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, hsl(187 85% 53% / 0.15), hsl(262 83% 58% / 0.15));
-    color: hsl(var(--primary));
-    border: 1px solid hsl(var(--primary) / 0.3);
+    background: linear-gradient(135deg, rgb(253 141 48 / 0.12), rgb(149 84 200 / 0.12));
+    color: #fd8d30;
+    border: 1px solid rgb(253 141 48 / 0.35);
   }
 
   @media (min-width: 768px) {

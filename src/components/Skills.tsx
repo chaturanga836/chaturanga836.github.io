@@ -4,10 +4,9 @@ import { resume, skillCategoryStyles } from "../data/resume";
 import SectionHeading from "./SectionHeading";
 
 const legend = [
-  { color: "bg-primary", label: "Frontend" },
-  { color: "bg-accent", label: "Backend" },
-  { color: "bg-orange-400", label: "Cloud" },
-  { color: "bg-emerald-400", label: "Data" },
+  { color: "#3A8DEF", label: "Frontend / Data" },
+  { color: "#9554c8", label: "Backend" },
+  { color: "#FD8D30", label: "Cloud / Infra" },
 ];
 
 export default function Skills() {
@@ -45,7 +44,7 @@ export default function Skills() {
           <div className="flex flex-wrap justify-center gap-6 mt-10 text-sm text-muted-foreground">
             {legend.map(({ color, label }) => (
               <div key={label} className="flex items-center gap-2">
-                <div className={`w-3 h-3 rounded-full ${color}`} />
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />
                 <span>{label}</span>
               </div>
             ))}

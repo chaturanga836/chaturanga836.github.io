@@ -12,9 +12,11 @@ export const navLinks = [
 ];
 
 export const skillCategoryStyles: Record<string, string> = {
-  frontend: "hover:border-primary hover:shadow-[0_0_20px_hsl(187_85%_53%/0.2)]",
-  backend: "hover:border-accent hover:shadow-[0_0_20px_hsl(262_83%_58%/0.2)]",
-  cloud: "hover:border-orange-400 hover:shadow-[0_0_20px_rgba(251,146,60,0.2)]",
-  data: "hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(52,211,153,0.2)]",
-  general: "hover:border-primary hover:shadow-[0_0_20px_hsl(187_85%_53%/0.2)]",
+  frontend: "hover:border-[#3A8DEF] hover:shadow-[0_0_20px_rgba(58,141,239,0.2)]",
+  backend: "hover:border-[#9554c8] hover:shadow-[0_0_20px_rgba(149,84,200,0.2)]",
+  cloud: "hover:border-[#FD8D30] hover:shadow-[0_0_20px_rgba(253,141,48,0.2)]",
+  data: "hover:border-[#3A8DEF] hover:shadow-[0_0_20px_rgba(58,141,239,0.2)]",
+  infrastructure: "hover:border-[#FD8D30] hover:shadow-[0_0_20px_rgba(253,141,48,0.2)]",
+  Authentication: "hover:border-[#9554c8] hover:shadow-[0_0_20px_rgba(149,84,200,0.2)]",
+  general: "hover:border-[#9554c8] hover:shadow-[0_0_20px_rgba(149,84,200,0.2)]",
 };

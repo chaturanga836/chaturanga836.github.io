@@ -1,3 +1,13 @@
+:root {
+  --pdf-blue: #3a8def;
+  --pdf-orange: #fd8d30;
+  --pdf-purple: #9554c8;
+  --pdf-text: #334155;
+  --pdf-muted: #64748b;
+  --pdf-bg: #ffffff;
+  --pdf-border: #e2e8f0;
+}
+
 .print-only {
   display: none;
 }
@@ -7,8 +17,8 @@
 }
 
 .resume-pdf {
-  color: #111;
-  background: #fff;
+  color: var(--pdf-text);
+  background: var(--pdf-bg);
   font-family: Inter, Arial, sans-serif;
   font-size: 10pt;
   line-height: 1.5;
@@ -18,7 +28,7 @@
 
 /* Header with photo */
 .resume-header {
-  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 2px solid var(--pdf-blue);
   padding-bottom: 14px;
   margin-bottom: 18px;
 }
@@ -35,7 +45,7 @@
   min-width: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #1a1a1a;
+  border: 2px solid var(--pdf-purple);
 }
 
 .resume-header-text {
@@ -49,30 +59,31 @@
   margin: 0 0 2px;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  color: var(--pdf-blue);
 }
 
 .resume-title {
   font-size: 11pt;
   font-weight: 600;
   margin: 0 0 8px;
-  color: #333;
+  color: var(--pdf-purple);
 }
 
 .resume-contact {
   font-size: 8.5pt;
-  color: #444;
+  color: var(--pdf-muted);
   margin: 0 0 3px;
   line-height: 1.4;
 }
 
 .resume-contact-link {
-  color: #2563eb;
+  color: var(--pdf-blue);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .resume-contact-link:hover {
-  color: #1d4ed8;
+  color: var(--pdf-purple);
 }
 
 /* Sections */
@@ -86,10 +97,10 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border-bottom: 1.5px solid #333;
+  border-bottom: 1.5px solid var(--pdf-blue);
   padding-bottom: 4px;
   margin: 0 0 10px;
-  color: #111;
+  color: var(--pdf-purple);
 }
 
 /* Badges (skills + project tech) */
@@ -110,31 +121,32 @@
   font-size: 8pt;
   font-weight: 500;
   line-height: 1.3;
-  border: 1px solid #bbb;
-  background: #f3f4f6;
-  color: #222;
+  border: 1px solid rgb(58 141 239 / 0.35);
+  background: rgb(58 141 239 / 0.1);
+  color: var(--pdf-blue);
   white-space: nowrap;
 }
 
 .resume-badge-accent {
-  background: #e0f7fa;
-  border-color: #0891b2;
-  color: #0e7490;
+  background: rgb(253 141 48 / 0.12);
+  border-color: rgb(253 141 48 / 0.45);
+  color: #c2410c;
   font-size: 7pt;
   padding: 2px 8px;
 }
 
 .resume-badge-muted {
-  background: #eee;
-  border-color: #999;
-  color: #555;
+  background: rgb(149 84 200 / 0.1);
+  border-color: rgb(149 84 200 / 0.35);
+  color: var(--pdf-purple);
   font-size: 7pt;
   padding: 2px 8px;
 }
 
 .resume-badge-tech {
-  background: #fafafa;
-  border-color: #ccc;
+  background: rgb(149 84 200 / 0.08);
+  border-color: rgb(149 84 200 / 0.3);
+  color: #6b21a8;
   font-size: 7.5pt;
   padding: 2px 8px;
   white-space: normal;
@@ -145,7 +157,7 @@
   margin-bottom: 12px;
   page-break-inside: avoid;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--pdf-border);
 }
 
 .resume-entry:last-child {
@@ -177,7 +189,7 @@
   font-size: 10.5pt;
   font-weight: 700;
   margin: 0;
-  color: #111;
+  color: var(--pdf-text);
   line-height: 1.3;
 }
 
@@ -185,14 +197,14 @@
   font-size: 9pt;
   font-weight: 500;
   margin: 0;
-  color: #0891b2;
+  color: var(--pdf-blue);
   line-height: 1.3;
 }
 
 .resume-entry-date {
   font-size: 8.5pt;
   font-weight: 500;
-  color: #555;
+  color: var(--pdf-orange);
   margin: 0;
   text-align: right;
   white-space: nowrap;
@@ -202,20 +214,20 @@
 
 .resume-meta {
   font-size: 9pt;
-  color: #666;
+  color: var(--pdf-muted);
   margin: 0 0 4px;
 }
 
 .resume-text {
   margin: 0 0 6px;
-  color: #222;
+  color: var(--pdf-text);
   font-size: 9.5pt;
   line-height: 1.45;
 }
 
 .resume-link {
   font-size: 8pt;
-  color: #2563eb;
+  color: var(--pdf-blue);
   margin: 4px 0 0;
   word-break: break-all;
 }
@@ -229,7 +241,7 @@
   html,
   body {
     background: #fff !important;
-    color: #111 !important;
+    color: var(--pdf-text) !important;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
@@ -257,7 +269,7 @@
   }
 
   .resume-contact-link {
-    color: #2563eb !important;
+    color: var(--pdf-blue) !important;
     text-decoration: underline !important;
   }
 

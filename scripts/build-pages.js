@@ -7,9 +7,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const dist = path.join(root, "dist");
 
-console.log("Building site...");
-execSync("npm run build", { cwd: root, stdio: "inherit" });
-
 function copyFile(src, dest) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.copyFileSync(src, dest);
@@ -25,6 +22,11 @@ function copyDir(srcDir, destDir) {
     else copyFile(src, dest);
   }
 }
+
+console.log("Building site...");
+// Ensure Vite always builds from source entry, not deployed index.html
+copyFile(path.join(root, "index.source.html"), path.join(root, "index.html"));
+execSync("npm run build", { cwd: root, stdio: "inherit" });
 
 // Deploy built files to repo root for GitHub Pages
 copyFile(path.join(dist, "index.html"), path.join(root, "index.html"));

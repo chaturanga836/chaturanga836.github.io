@@ -73,8 +73,8 @@
     },
     {
       "name": "Cryptoworth",
-      "period": "2020 — 2024",
-      "role": "Full-Stack Developer",
+      "period": "2020 — Present",
+      "role": "Cryptoworth — Contract Employee",
       "description": "Platform for crypto traders to sync transaction history from wallets and exchanges, then calculate cost basis, gains/losses, and tax values.",
       "technologies": ["Angular 7", "Laravel", "Node.js", "MySQL"]
     },
@@ -139,10 +139,16 @@
   ],
   "experience": [
     {
+      "title": "Contract Employee",
+      "company": "Cryptoworth",
+      "period": "2020 — Present",
+      "description": "Full-stack development on a crypto portfolio platform that syncs transaction history from wallets and exchanges and calculates cost basis, gains/losses, and tax values."
+    },
+    {
       "title": "Freelancer",
       "company": "Self-Employed",
       "period": "Jan 2019",
-      "description": "Projects include Scalable Data Analytics Platform, PHD Deals, Tamm Abu Dhabi, Subclub, Cryptoworth, Kipstore, Ceylon Assets."
+      "description": "Projects include Scalable Data Analytics Platform, PHD Deals, Tamm Abu Dhabi, Subclub, Kipstore, Ceylon Assets."
     },
     {
       "title": "Senior Software Engineering Consultant",
