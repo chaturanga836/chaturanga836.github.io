@@ -7,6 +7,7 @@ export interface Profile {
   phone: string;
   github: string;
   linkedin: string;
+  website: string;
   photo: string;
 }
 
@@ -25,7 +26,7 @@ export interface About {
 
 export interface Skill {
   name: string;
-  category: "frontend" | "backend" | "cloud" | "data" | "general";
+  category: string;
 }
 
 export interface Project {

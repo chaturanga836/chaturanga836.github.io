@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { navLinks, resume } from "../data/resume";
+import { downloadResumePdf } from "../utils/downloadPdf";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,6 +40,14 @@ export default function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
               </a>
             ))}
+            <button
+              type="button"
+              onClick={downloadResumePdf}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/40 text-primary text-sm font-medium hover:bg-primary/10 transition-colors"
+            >
+              <Download size={16} />
+              Download PDF
+            </button>
             <a
               href={`mailto:${resume.profile.email}`}
               className="px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
@@ -75,6 +84,17 @@ export default function Header() {
                     {link.label}
                   </a>
                 ))}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    downloadResumePdf();
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-primary/40 text-primary text-sm font-medium hover:bg-primary/10 transition-colors"
+                >
+                  <Download size={16} />
+                  Download PDF
+                </button>
                 <a
                   href={`mailto:${resume.profile.email}`}
                   className="px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity text-center"

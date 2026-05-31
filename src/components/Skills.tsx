@@ -35,7 +35,7 @@ export default function Skills() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className={`skill-tag ${skillCategoryStyles[skill.category]} cursor-default`}
+                className={`skill-tag ${skillCategoryStyles[skill.category] ?? skillCategoryStyles.general} cursor-default`}
               >
                 {skill.name}
               </motion.div>

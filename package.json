@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/use-dev-index.js && vite",
     "build": "vite build",
     "preview": "vite preview",
     "build:pages": "node scripts/build-pages.js"

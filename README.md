@@ -77,3 +77,16 @@ Your site updates at [https://chaturanga836.github.io/](https://chaturanga836.gi
 ## Profile photo
 
 Replace `public/profile.jpg` with your photo, then run `npm run build:pages`.
+
+---
+
+## Export as PDF
+
+1. Open the site locally (`npm run dev`) or live at [https://chaturanga836.github.io/](https://chaturanga836.github.io/)
+2. Click **Download PDF** in the top navigation
+3. In the print dialog, choose **Save as PDF** (or **Microsoft Print to PDF** on Windows)
+4. Save the file
+
+The PDF uses a clean résumé layout (summary, skills, experience, projects, education) pulled from `content/resume.json`. It may span multiple pages depending on how many projects you list.
+
+**Tip:** In the print dialog, disable headers/footers for a cleaner PDF.

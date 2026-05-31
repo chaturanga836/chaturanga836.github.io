@@ -47,6 +47,10 @@ if (fs.existsSync(path.join(dist, "favicon.ico"))) {
   copyFile(path.join(dist, "favicon.ico"), path.join(root, "favicon.ico"));
 }
 
+if (fs.existsSync(path.join(dist, "print.css"))) {
+  copyFile(path.join(dist, "print.css"), path.join(root, "print.css"));
+}
+
 console.log("\nDone! Site built to repo root.");
 console.log("Edit content/resume.json, then run: npm run build:pages");
 console.log("Preview locally with: npm run dev");

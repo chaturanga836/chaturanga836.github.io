@@ -6,18 +6,22 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Footer from "./components/Footer";
+import ResumePdf from "./components/ResumePdf";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Education />
-      <Footer />
-    </div>
+    <>
+      <div className="no-print min-h-screen bg-background">
+        <Header />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Education />
+        <Footer />
+      </div>
+      <ResumePdf />
+    </>
   );
 }

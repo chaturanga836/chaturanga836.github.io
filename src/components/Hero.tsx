@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Download } from "lucide-react";
 import { resume } from "../data/resume";
+import { downloadResumePdf } from "../utils/downloadPdf";
 
 const { profile } = resume;
 
@@ -105,6 +106,14 @@ export default function Hero() {
               >
                 <Linkedin size={24} />
               </a>
+              <button
+                type="button"
+                onClick={downloadResumePdf}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/40 text-primary font-medium hover:bg-primary/10 transition-colors"
+              >
+                <Download size={18} />
+                Download PDF
+              </button>
               <a
                 href={`mailto:${profile.email}`}
                 className="px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
