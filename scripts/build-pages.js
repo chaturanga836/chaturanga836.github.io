@@ -24,7 +24,8 @@ function copyDir(srcDir, destDir) {
 }
 
 console.log("Building site...");
-// Vite builds from index.source.html (see vite.config.ts rollup input)
+// Build from source HTML; production index.html must not point at /src/main.tsx
+copyFile(path.join(root, "index.source.html"), path.join(root, "index.html"));
 execSync("npm run build", { cwd: root, stdio: "inherit" });
 
 // Deploy built files to repo root for GitHub Pages
@@ -50,6 +51,10 @@ if (fs.existsSync(path.join(dist, "favicon.ico"))) {
 
 if (fs.existsSync(path.join(dist, "print.css"))) {
   copyFile(path.join(dist, "print.css"), path.join(root, "print.css"));
+}
+
+if (fs.existsSync(path.join(dist, ".nojekyll"))) {
+  copyFile(path.join(dist, ".nojekyll"), path.join(root, ".nojekyll"));
 }
 
 const imgSrc = path.join(dist, "img");
