@@ -42,6 +42,8 @@ export interface Project {
   technologies: string[];
   link?: string;
   linkLabel?: string;
+  demoLink?: string;
+  demoLabel?: string;
   highlight?: boolean;
   highlightLabel?: string;
   status?: string;
@@ -70,5 +72,5 @@ export interface Resume {
   projectsIntro: string;
   projects: Project[];
   experience: Experience[];
-  education: Education;
+  education: Education[];
 }

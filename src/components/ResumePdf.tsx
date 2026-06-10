@@ -124,16 +124,18 @@ export default function ResumePdf() {
 
       <section className="resume-section">
         <h2 className="resume-section-title">Education</h2>
-        <div className="resume-entry">
-          <div className="resume-entry-row">
-            <div className="resume-entry-main">
-              <p className="resume-entry-title">{education.degree}</p>
-              <p className="resume-entry-subtitle">{education.school}</p>
+        {education.map((entry) => (
+          <div key={`${entry.degree}-${entry.school}`} className="resume-entry">
+            <div className="resume-entry-row">
+              <div className="resume-entry-main">
+                <p className="resume-entry-title">{entry.degree}</p>
+                <p className="resume-entry-subtitle">{entry.school}</p>
+              </div>
+              <p className="resume-entry-date">{entry.period}</p>
             </div>
-            <p className="resume-entry-date">{education.period}</p>
+            <p className="resume-meta">{entry.honors}</p>
           </div>
-          <p className="resume-meta">{education.honors}</p>
-        </div>
+        ))}
       </section>
     </div>
   );

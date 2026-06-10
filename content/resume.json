@@ -3,7 +3,7 @@
     "firstName": "Buddhika",
     "lastName": "Chathuranga",
     "title": "Full-Stack Architect / Lead Developer",
-    "location": "Malabe, Sri Lanka",
+    "location": "503/A, Susilarama Road, Malabe, 10115, Sri Lanka",
     "email": "chaturanga836@gmail.com",
     "phone": "+94 757225338",
     "github": "https://github.com/chaturanga836",
@@ -28,32 +28,48 @@
   },
   "skills": [
     { "name": "React", "category": "frontend" },
+    { "name": "Angular (7–18)", "category": "frontend" },
+    { "name": "AngularJS", "category": "frontend" },
     { "name": "Next.js", "category": "frontend" },
-    { "name": "Angular", "category": "frontend" },
-    { "name": "Laravel", "category": "backend" },
+    { "name": "JavaScript", "category": "frontend" },
+    { "name": "HTML / SCSS / CSS", "category": "frontend" },
+    { "name": "Bootstrap", "category": "frontend" },
+    { "name": "Laravel (up to v10)", "category": "backend" },
+    { "name": "Node.js", "category": "backend" },
+    { "name": "PHP", "category": "backend" },
     { "name": "Python", "category": "backend" },
-    { "name": "AWS", "category": "cloud" },
-    { "name": "Postgres", "category": "data" },
-    { "name": "MySQL", "category": "data" },
-    { "name": "Docker", "category": "infrastructure" },
-    { "name": "Jenkins", "category": "infrastructure" },
-    { "name": "Dozzle", "category": "infrastructure" },
+    { "name": "CodeIgniter", "category": "backend" },
+    { "name": "REST API Design", "category": "backend" },
+    { "name": "C# .NET", "category": "backend" },
     { "name": "Keycloak", "category": "Authentication" },
     { "name": "Minio", "category": "data" },
     { "name": "Hudi", "category": "data" },
     { "name": "Trino", "category": "data" },
-    { "name": "Full-Stack Development", "category": "general" }
+    { "name": "MySQL", "category": "data" },
+    { "name": "Postgres", "category": "data" },
+    { "name": "Redis", "category": "data" },
+    { "name": "MongoDB", "category": "data" },
+    { "name": "AWS", "category": "cloud" },
+    { "name": "Oracle Cloud", "category": "cloud" },
+    { "name": "Git", "category": "infrastructure" },
+    { "name": "Docker", "category": "infrastructure" },
+    { "name": "Jenkins", "category": "infrastructure" },
+    { "name": "Dozzle", "category": "infrastructure" },
+    { "name": "SOLID Principles", "category": "architecture" },
+    { "name": "Software Architecture", "category": "architecture" }
   ],
-  "projectsIntro": "Professional and personal work across e-commerce, government digital services, fintech, and data infrastructure.",
+  "projectsIntro": "Professional and personal work across e-commerce, government digital services, fintech, enterprise data platforms, and theater management systems.",
   "projects": [
     {
-      "name": "Data Pieline and workflow Manager",
+      "name": "Visual Design Data Workflow Manager",
       "period": "Personal Project",
-      "role": "Architect / Lead Engineer/ Developer",
-      "description": "Scalable data pipeline platform for managing REST API connections, workspace-based integrations, and automated data flows across enterprise analytics infrastructure.",
-      "technologies": ["React/next Js", "AWS", "Postgres", "Python/FastAPI", "Docker", "Jenkins", "Dozzle","Keycloak", "Minio", "Hudi"],
-      "link": "http://13.200.160.10:3000/workspaces/1/connections/rest-api/groups/3",
+      "role": "Architect / Lead Engineer / Developer",
+      "description": "Visual data workflow platform for non-technical users to extract, merge, and transform data from different endpoints into one platform.",
+      "technologies": ["React / Next.js", "AWS", "Postgres", "Python / FastAPI", "Docker", "Jenkins", "Dozzle", "Keycloak", "Minio", "Hudi"],
+      "link": "http://13.200.160.10:3000/",
       "linkLabel": "View Live Demo",
+      "demoLink": "https://drive.google.com/file/d/1r_3li2653iJrG3xb87VnugSmA8mleubi/view?usp=drive_link",
+      "demoLabel": "Watch Demo Video",
       "highlight": true,
       "highlightLabel": "Featured Personal Project",
       "screenshots": [
@@ -81,16 +97,16 @@
       "technologies": ["Angular 10", "C# .NET", "Azure"]
     },
     {
-      "name": "Tamm Abu Dhabi /Wipro",
+      "name": "Tamm Abu Dhabi / Wipro",
       "period": "Jan 2022 — April 2022",
       "role": "Frontend Developer",
       "description": "Government digital services platform designed to centralize and deliver Abu Dhabi government services online.",
-      "technologies": ["React js", "Camunda"]
+      "technologies": ["React.js", "Camunda"]
     },
     {
       "name": "Cryptoworth",
-      "period": "2020 — Present",
-      "role": "Cryptoworth — Contract Employee",
+      "period": "2021 — Present",
+      "role": "Contract Employee",
       "description": "Platform for crypto traders to sync transaction history from wallets and exchanges, then calculate cost basis, gains/losses, and tax values.",
       "technologies": ["Angular 7", "Laravel", "Node.js", "MySQL"]
     },
@@ -104,7 +120,7 @@
     {
       "name": "Ceylon Assets",
       "period": "Ongoing",
-      "role": "Frontend Enginner",
+      "role": "Frontend Engineer",
       "description": "Platform enabling users to monitor asset values including index funds, money market funds, and dollar-bound funds.",
       "technologies": ["React"],
       "status": "Ongoing"
@@ -122,34 +138,41 @@
       "period": "Dec 2019 — 2020",
       "role": "Xinfinit Pvt Ltd — Lead / Scrum Master",
       "description": "Crypto trading platform allowing users to connect wallets and exchange coins through a KYC-verified registration process.",
-      "technologies": ["Crypto Trading", "KYC", "Wallet Integration"]
+      "technologies": ["AngularJS", "Crypto Trading", "KYC", "Wallet Integration"]
     },
     {
       "name": "Mountain Wolf",
       "period": "Dec 2019 — 2020",
       "role": "Xinfinit Pvt Ltd",
       "description": "Crypto trading platform enabling users to trade crypto coins through a unified exchange experience.",
-      "technologies": ["Crypto Trading", "Exchange Platform"]
+      "technologies": ["AngularJS", "Crypto Trading", "Exchange Platform"]
+    },
+    {
+      "name": "Cedar Electronics",
+      "period": "Oct 2019",
+      "role": "Keeneye Solutions — Consultant",
+      "description": "Dashcam video streaming platform for a consumer electronics company. Dash cams sync GPS and Wi-Fi data to the cloud; users log in via web or mobile to select, edit, and download videos.",
+      "technologies": ["React", "Redux"]
     },
     {
       "name": "MK2",
       "period": "Mar 2017 — Jan 2019",
       "role": "LayoutIndex — Senior Software Engineer",
-      "description": "Theater management system for MK2, a France-based event management organization that provides facilities to manage events and movies.",
-      "technologies": ["Laravel", "React", "MySQL", "Node.js", "Express"]
+      "description": "Theater management system for MK2, a France-based event management organization. Master users create movies/events, media, rooms, and theaters; daughter users schedule events and define pricing.",
+      "technologies": ["Laravel", "React", "Redux", "MySQL", "Node.js", "Express"]
     },
     {
       "name": "Scope Cinemas",
       "period": "Mar 2017 — Jan 2019",
       "role": "LayoutIndex — Senior Software Engineer",
-      "description": "Theater management system for a Sri Lankan cinema chain operating 7 theatres in Colombo.",
+      "description": "Theater management system for a Sri Lankan cinema chain with 7 theatres in Colombo. Supports normal and advance bookings, with admin tools for movies, theatres, schedules, and pricing.",
       "technologies": ["CodeIgniter", "MySQL", "AngularJS"]
     },
     {
       "name": "444-app",
       "period": "Mar 2017 — Jan 2019",
       "role": "LayoutIndex — Senior Software Engineer",
-      "description": "Booking platform built with Phalcon and MySQL for managing reservations and customer workflows.",
+      "description": "Unified booking platform for movies, events, travel tickets, medical appointments, and more.",
       "technologies": ["Phalcon", "MySQL", "Redis", "AngularJS"]
     }
   ],
@@ -157,48 +180,63 @@
     {
       "title": "Contract Employee",
       "company": "Cryptoworth",
-      "period": "2020 — Present",
+      "period": "2021 — Present",
       "description": "Full-stack development on a crypto portfolio platform that syncs transaction history from wallets and exchanges and calculates cost basis, gains/losses, and tax values."
     },
     {
       "title": "Freelancer",
       "company": "Self-Employed",
-      "period": "Jan 2019",
-      "description": "Projects include Scalable Data Analytics Platform, PHD Deals, Tamm Abu Dhabi, Subclub, Kipstore, Ceylon Assets."
+      "period": "Since Jan 2019",
+      "description": "Projects include Visual Design Data Workflow Manager, PHD Deals, Tamm Abu Dhabi, Subclub, Kipstore, and Ceylon Assets."
+    },
+    {
+      "title": "Lead / Scrum Master",
+      "company": "Xinfinit Pvt Ltd",
+      "location": "Colombo, Sri Lanka",
+      "period": "Dec 2019 — 2020",
+      "description": "Led the team as scrum master, reviewed code before merging, discussed technical problems with team members, and validated requirements with business analysts. Projects include Dxone and Mountain Wolf."
     },
     {
       "title": "Senior Software Engineering Consultant",
       "company": "Keeneye Solutions",
       "location": "Colombo, Sri Lanka",
-      "period": "Oct 2019 — Dec 2019",
-      "description": "Projects include Cedar Electronics."
+      "period": "Oct 2019",
+      "description": "Identified project scope and selected appropriate technologies. Delivered Cedar Electronics dashcam video streaming platform using React and Redux."
     },
     {
       "title": "Senior Software Engineer",
       "company": "LayoutIndex",
       "location": "Colombo, Sri Lanka",
       "period": "Mar 2017 — Jan 2019",
-      "description": "Projects include MK2, Scope Cinemas, 444-app."
+      "description": "Led architecture and development on theater and booking platforms. Projects include MK2, Scope Cinemas, and 444-app."
     },
     {
       "title": "Associate Software Engineer",
       "company": "Frontline Developers",
       "location": "Dehiwala, Sri Lanka",
       "period": "Jun 2015 — Dec 2016",
-      "description": "Projects include LearmnerSocial."
+      "description": "Oversaw requirements gathering, planning, design, implementation, and testing. Projects include LearmnerSocial (Laravel 4, Angular, Node.js/Express, MongoDB)."
     },
     {
       "title": "Developer",
       "company": "Rapid Venture (Pvt) Ltd",
       "location": "Malabe, Sri Lanka",
       "period": "Jan 2012 — Mar 2015",
-      "description": "Projects include Student management system, Account Ledger management system, Product Line management system."
+      "description": "Projects include Student Management System (Don Bosco Technical College), Account Ledger Management System (GOBA Association), and Product Line Management System (North Sail Manufacturers)."
     }
   ],
-  "education": {
-    "degree": "BSc in Software Engineering",
-    "school": "Plymouth University",
-    "period": "2012 — 2016",
-    "honors": "2nd Lower Class"
-  }
+  "education": [
+    {
+      "degree": "MBA",
+      "school": "Stafford Share University",
+      "period": "In View 2019",
+      "honors": "In progress"
+    },
+    {
+      "degree": "BSc in Software Engineering",
+      "school": "Plymouth University",
+      "period": "2012 — 2016",
+      "honors": "2nd Lower Class"
+    }
+  ]
 }

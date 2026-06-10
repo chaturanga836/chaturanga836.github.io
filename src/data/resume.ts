@@ -19,4 +19,5 @@ export const skillCategoryStyles: Record<string, string> = {
   infrastructure: "hover:border-[#FD8D30] hover:shadow-[0_0_20px_rgba(253,141,48,0.2)]",
   Authentication: "hover:border-[#9554c8] hover:shadow-[0_0_20px_rgba(149,84,200,0.2)]",
   general: "hover:border-[#9554c8] hover:shadow-[0_0_20px_rgba(149,84,200,0.2)]",
+  architecture: "hover:border-[#9554c8] hover:shadow-[0_0_20px_rgba(149,84,200,0.2)]",
 };

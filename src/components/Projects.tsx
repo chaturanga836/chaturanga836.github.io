@@ -66,16 +66,28 @@ export default function Projects() {
                   <ProjectGallery screenshots={project.screenshots} />
                 )}
 
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium mt-auto"
-                  >
-                    {project.linkLabel ?? "View Project"} →
-                  </a>
-                )}
+                <div className="flex flex-wrap gap-4 mt-auto">
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+                    >
+                      {project.linkLabel ?? "View Project"} →
+                    </a>
+                  )}
+                  {project.demoLink && (
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+                    >
+                      {project.demoLabel ?? "Watch Demo"} →
+                    </a>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
