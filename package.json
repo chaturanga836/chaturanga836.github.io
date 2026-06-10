@@ -5,7 +5,7 @@
   "packageManager": "npm@10.8.2",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/use-dev-index.js && vite",
+    "dev": "vite index.source.html",
     "build": "vite build",
     "preview": "vite preview",
     "build:pages": "node scripts/build-pages.js"

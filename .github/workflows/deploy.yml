@@ -31,9 +31,6 @@ jobs:
       # Match lockfile generator; avoids picomatch lock/sync errors on npm ci
       - run: npm install -g npm@10.8.2
 
-      # Vite must build from source HTML, not the deployed root index.html
-      - run: cp index.source.html index.html
-
       - run: npm ci
       - run: npm run build
 

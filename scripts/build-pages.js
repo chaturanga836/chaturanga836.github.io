@@ -24,8 +24,7 @@ function copyDir(srcDir, destDir) {
 }
 
 console.log("Building site...");
-// Ensure Vite always builds from source entry, not deployed index.html
-copyFile(path.join(root, "index.source.html"), path.join(root, "index.html"));
+// Vite builds from index.source.html (see vite.config.ts rollup input)
 execSync("npm run build", { cwd: root, stdio: "inherit" });
 
 // Deploy built files to repo root for GitHub Pages

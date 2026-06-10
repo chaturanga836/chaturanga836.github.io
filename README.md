@@ -54,10 +54,16 @@ After editing `content/resume.json`:
 
 ```bash
 npm run build:pages
-git add content/resume.json assets/ index.html 404.html profile.jpg
+git add content/resume.json assets/ index.html 404.html print.css img/
 git commit -m "Update resume content"
 git push origin master
 ```
+
+GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys automatically on push.
+
+**Important:** Do not commit a dev `index.html` that points to `/src/main.tsx`. That breaks the live site with a MIME type error. Always run `npm run build:pages` before pushing, or rely on GitHub Actions (which builds from `index.source.html`).
+
+In repo **Settings → Pages**, set **Source** to **GitHub Actions**.
 
 Your site updates at [https://chaturanga836.github.io/](https://chaturanga836.github.io/)
 
